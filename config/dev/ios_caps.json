@@ -1,0 +1,9 @@
+{
+  "platformName": "iOS",
+  "automationName": "XCUITest",
+  "deviceName": "iPhone 14",
+  "platformVersion": "17.2",
+  "bundleId": "com.example.app",
+  "udid": "auto",
+  "noReset": true
+}

@@ -1,0 +1,16 @@
+# Which platform to run
+platform: android
+
+# Appium server
+appium:
+  server_url: "http://127.0.0.1:4723"
+
+# Explicit wait settings
+timeouts:
+  explicitWait: 15
+  pollFrequency: 0.4
+
+# Performance settings
+performance:
+  waitForIdleTimeout: 0
+  waitForSelectorTimeout: 0
