@@ -72,6 +72,7 @@ def load_android_caps():
         return json.load(f)
 
 
+
 def load_ios_caps():
     env = os.getenv("ENV", "dev")
     with open(f"config/{env}/ios_caps.json", "r") as f:

@@ -21,7 +21,9 @@ class AppiumService:
                 self.appium_cmd,
                 "-a", self.host,
                 "-p", str(self.port),
-                "--log", "logs/appium.log"
+                "--log", "logs/appium.log",
+                "--allow-insecure",
+                "*:chromedriver_autodownload"
             ]
         )
 

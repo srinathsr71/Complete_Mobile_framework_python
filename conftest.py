@@ -43,6 +43,8 @@ def driver():
 
     driver.quit()
 
+
+
 @pytest.fixture
 def wait_utils(driver):
     config = load_config()

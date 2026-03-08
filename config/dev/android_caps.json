@@ -1,5 +1,5 @@
 {
-  "platformName": "Android",
+"platformName": "Android",
   "automationName": "UiAutomator2",
   "deviceName": "oneplus",
   "udid": "KZ4HUSYP65USP7HY",
@@ -7,6 +7,7 @@
   "appActivity": ".SplashActivity",
   "appWaitActivity": ".MainActivity",
   "noReset": false,
-  "autoGrantPermissions": true
+  "autoGrantPermissions": true,
+  "chromedriverAutodownload": true
 }
 

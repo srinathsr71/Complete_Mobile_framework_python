@@ -1,4 +1,6 @@
 import logging
+import socket
+
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.options.ios import XCUITestOptions
@@ -66,6 +68,21 @@ class DriverFactory:
         )
 
         log.info(f"Connecting to Appium server: {server_url}")
+        # system_port = get_free_port()
+        # log.info(f"Using systemPort: {system_port}")
+        # options.set_capability("systemPort", system_port)
+        #
+        # if device == "emulator" and "avd" in caps:
+        #     log.info(f"Using Android Emulator AVD: {caps['avd']}")
+        #     options.set_capability("avd", caps["avd"])
+        #
+        # server_url = (
+        #     config["appium"]["server_url"]
+        #     if environment == "dev" or not remote_url
+        #     else remote_url
+        # )
+        #
+        # log.info(f"Connecting to Appium server: {server_url}")
 
         driver = webdriver.Remote(server_url, options=options)
 
@@ -99,3 +116,10 @@ class DriverFactory:
 
         log.info("iOS driver created successfully")
         return driver
+
+# def get_free_port(start=8200, end=8299):
+#     for port in range(start, end):
+#         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+#             if s.connect_ex(("127.0.0.1", port)) != 0:
+#                 return port
+#     raise Exception("No free systemPort available in range 8200-8299")

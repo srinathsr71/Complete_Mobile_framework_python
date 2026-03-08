@@ -1,2 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"../features/general_store.feature: Successful shopping general store adding products","62003","test_tc02[India-demo-female]","tests","2026-02-22","passed","2026-02-22","","test_runner_store","",""
