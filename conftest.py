@@ -26,10 +26,33 @@ def start_appium():
             pass
 
 
+# @pytest.fixture(scope="function")
+# def driver():
+#     config = load_config()
+#     android_caps = load_android_caps()
+#     ios_caps = load_ios_caps()
+#
+#     driver = DriverFactory.create_driver(
+#         config,
+#         android_caps,
+#         ios_caps,
+#     )
+#
+#     pytest.driver_instance = driver
+#     yield driver
+#
+#     driver.quit()
+
 @pytest.fixture(scope="function")
 def driver():
+
     config = load_config()
-    android_caps = load_android_caps()
+
+    app = os.getenv("APP", "app2")
+
+    print(f"Launching app capability profile: {app}")
+
+    android_caps = load_android_caps(app)
     ios_caps = load_ios_caps()
 
     driver = DriverFactory.create_driver(
@@ -42,7 +65,6 @@ def driver():
     yield driver
 
     driver.quit()
-
 
 
 @pytest.fixture

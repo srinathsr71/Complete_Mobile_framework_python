@@ -1,0 +1,13 @@
+[38;5;112m[Appium][0m Welcome to Appium v3.2.0
+[38;5;112m[Appium][0m Non-default server args:
+[38;5;112m[Appium][0m { address: [32m'127.0.0.1'[39m, allowInsecure: [ [32m'*:chromedriver_autodownload'[39m ] }
+[38;5;112m[Appium][0m Explicitly enabling insecure features:
+[38;5;112m[Appium][0m     *:chromedriver_autodownload
+[38;5;112m[Appium][0m The autodetected Appium home path: C:\Users\Srinath\.appium
+[38;5;112m[Appium][0m Attempting to load driver uiautomator2...
+[38;5;112m[Appium][0m Requiring driver at C:\Users\Srinath\.appium\node_modules\appium-uiautomator2-driver\build\index.js
+[38;5;112m[Appium][0m AndroidUiautomator2Driver has been successfully loaded in 0.666s
+[38;5;112m[Appium][0m Appium REST http interface listener started on http://127.0.0.1:4723
+[38;5;112m[Appium][0m Available drivers:
+[38;5;112m[Appium][0m   - uiautomator2@6.3.0 (automationName 'UiAutomator2')
+[38;5;112m[Appium][0m No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.

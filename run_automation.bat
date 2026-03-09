@@ -188,12 +188,27 @@ if "%EXEC_MODE%"=="" (
     pause
     exit /b
 )
+cls
+echo ===============================================================
+echo                APPLICATION Capabilities
+echo ===============================================================
+echo Available apps are defined in android_caps.json
+echo Example: app1, app2, app3
+echo ----------------------------------
+set /p APP=Enter application capability name:
+
+if "%APP%"=="" (
+    echo Application profile cannot be empty
+    pause
+    exit /b
+)
 
 cls
 echo ===============================================================
 echo                 TAG SELECTION
 echo ===============================================================
 set /p TAGS=Enter pytest markers (example: smoke or regression):
+
 
 cls
 echo ===============================================================

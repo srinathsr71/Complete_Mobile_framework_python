@@ -1,13 +1,24 @@
 {
-"platformName": "Android",
-  "automationName": "UiAutomator2",
-  "deviceName": "oneplus",
-  "udid": "KZ4HUSYP65USP7HY",
-  "appPackage": "com.androidsample.generalstore",
-  "appActivity": ".SplashActivity",
-  "appWaitActivity": ".MainActivity",
-  "noReset": false,
-  "autoGrantPermissions": true,
-  "chromedriverAutodownload": true
+  "app1": {
+    "platformName": "Android",
+    "automationName": "UiAutomator2",
+    "deviceName": "oneplus",
+    "udid": "KZ4HUSYP65USP7HY",
+    "appPackage": "com.androidsample.generalstore",
+    "appActivity": ".SplashActivity",
+    "appWaitActivity": ".MainActivity",
+    "noReset": false,
+    "autoGrantPermissions": true,
+    "chromedriverAutodownload": true
+  },
+   "app2": {
+    "platformName": "Android",
+    "automationName": "UiAutomator2",
+    "deviceName": "oneplus",
+    "udid": "KZ4HUSYP65USP7HY",
+    "appPackage": "io.appium.android.apis",
+    "appActivity": "io.appium.android.apis.ApiDemos",
+    "noReset": false,
+    "autoGrantPermissions": true
+    }
 }
-
