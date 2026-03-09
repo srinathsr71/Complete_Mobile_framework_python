@@ -66,11 +66,18 @@ def load_config():
         return yaml.safe_load(f)
 
 
-def load_android_caps():
-    env = os.getenv("ENV", "dev")
-    with open(f"config/{env}/android_caps.json", "r") as f:
-        return json.load(f)
+# def load_android_caps():
+#     env = os.getenv("ENV", "dev")
+#     with open(f"config/{env}/android_caps.json", "r") as f:
+#         return json.load(f)
 
+def load_android_caps(cap_name):
+    env = os.getenv("ENV", "dev")
+
+    with open(f"config/{env}/android_caps.json", "r") as f:
+        caps = json.load(f)
+
+    return caps[cap_name]
 
 
 def load_ios_caps():
