@@ -1,0 +1,3 @@
+Launching app capability profile: app2
+the method is working
+the selected text isEarth
