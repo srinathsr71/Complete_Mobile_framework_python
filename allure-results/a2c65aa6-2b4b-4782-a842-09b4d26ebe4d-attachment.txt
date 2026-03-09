@@ -1,0 +1,4 @@
+Launching app capability profile: app2
+Step reached
+the date is3-15-2026 01:02
+Actual date displayed: 3-15-2026 01:02

@@ -30,6 +30,13 @@ class BasePage:
             EC.presence_of_element_located(locator)
         )
 
+    def wait_element_visible(self, locator):
+        return self.wait.until(EC.visibility_of_element_located(locator)
+                               )
+
+    def Invisible_element(self, locator):
+        return self.wait.until(EC.invisibility_of_element_located(locator)
+                               )
     def scroll_down(self):
         params = {
             "left": 100,
@@ -81,3 +88,5 @@ class BasePage:
     def relaunch_app(self):
         self.driver.terminate_app(self.APP_ID)
         self.driver.activate_app(self.APP_ID)
+
+

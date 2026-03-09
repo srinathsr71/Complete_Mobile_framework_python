@@ -1,0 +1,2 @@
+Launching app capability profile: app2
+the left text isHello Appium
