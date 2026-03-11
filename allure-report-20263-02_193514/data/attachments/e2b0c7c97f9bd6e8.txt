@@ -1,0 +1,2 @@
+Launching app capability profile: app2
+['NATIVE_APP', 'WEBVIEW_io.appium.android.apis']

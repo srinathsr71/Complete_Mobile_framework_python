@@ -56,6 +56,9 @@ class BasePage:
             f"{self.__class__.__name__} must implement is_loaded()"
         )
 
+    def find(self, locator):
+        return self.driver.find_element(*locator)
+
     def scroll_and_click(self, text: str, max_scrolls: int = 5):
 
         for _ in range(max_scrolls):

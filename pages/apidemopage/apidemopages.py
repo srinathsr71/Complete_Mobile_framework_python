@@ -1,6 +1,11 @@
 import logging
 
+from appium.webdriver.common.touch_action import TouchAction
 from selenium.common import TimeoutException
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.actions.action_builder import ActionBuilder
+from selenium.webdriver.common.actions.pointer_input import PointerInput
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
 from appium.webdriver.common.appiumby import AppiumBy
@@ -69,6 +74,36 @@ class ApiDemoPage(BasePage):
     Cdate=get_locator((AppiumBy.ACCESSIBILITY_ID,"change the date"),(AppiumBy.ID,"not implemented"))
     okoption=get_locator((AppiumBy.ID,"android:id/button1"),(AppiumBy.ID,"not implemented"))
     datedisplay=get_locator((AppiumBy.ID,"io.appium.android.apis:id/dateDisplay"),(AppiumBy.ID,"not implemented"))
+    Ctime = get_locator((AppiumBy.ACCESSIBILITY_ID, "change the time"), (AppiumBy.ID, "not implemented"))
+    # chour= get_locator((AppiumBy.ACCESSIBILITY_ID, "10"),(AppiumBy.ID,"not implemented"))
+    # cmin = get_locator((AppiumBy.ACCESSIBILITY_ID, "30"), (AppiumBy.ID, "not implemented"))
+
+    # wOption=get_locator((AppiumBy.ACCESSIBILITY_ID,"WebView"),(AppiumBy.ID,"not implemented"))
+
+    dr_option=get_locator((AppiumBy.ACCESSIBILITY_ID,"Drag and Drop"),(AppiumBy.ID, "not implemented"))
+    drsource=get_locator((AppiumBy.ID,"io.appium.android.apis:id/drag_dot_1"),(AppiumBy.ID,"not implemented"))
+    drtarget=get_locator((AppiumBy.ID,"io.appium.android.apis:id/drag_dot_2"),(AppiumBy.ID,"not implemented"))
+    droptext=get_locator((AppiumBy.ID,"io.appium.android.apis:id/drag_result_text"),(AppiumBy.ID,"not implemented"))
+
+
+    Expandable_list=get_locator((AppiumBy.ACCESSIBILITY_ID,"Expandable Lists"),(AppiumBy.ID,"not implemented"))
+    Custom_adapter=get_locator((AppiumBy.ACCESSIBILITY_ID,"1. Custom Adapter"),(AppiumBy.ID,"not implemented"))
+    Pname=get_locator((AppiumBy.XPATH,'//android.widget.TextView[@text="People Names"]'),(AppiumBy.ID,"not implemented"))
+
+    sample_action=get_locator((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Sample action")'),(AppiumBy.ID,"not implemented"))
+
+    makePopup_option=get_locator((AppiumBy.ACCESSIBILITY_ID,"Make a Popup!"),(AppiumBy.ID,"not implemented"))
+    click_option=get_locator((AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Edit")'),(AppiumBy.ID,"not implemented"))
+
+    click_link=get_locator((AppiumBy.LINK_TEXT, "i am a link"),(AppiumBy.ID,"not implemented"))
+    gallery_option=get_locator((AppiumBy.ACCESSIBILITY_ID,"Gallery"),(AppiumBy.ID,"not implemented"))
+    photos_option=get_locator((AppiumBy.ACCESSIBILITY_ID,"1. Photos"),(AppiumBy.ID,"not implemented"))
+    first_image_option=get_locator((AppiumBy.XPATH,'//android.widget.Gallery[@resource-id="io.appium.android.apis:id/gallery"]/android.widget.ImageView[1]'),())
+
+
+
+
+
 
 
 
@@ -225,3 +260,160 @@ class ApiDemoPage(BasePage):
         element = self.wait_element_visible(self.datedisplay)
         print("the date is" + element.text)
         return element.text
+
+    def click_ctime(self):
+        log.info("UI ACTION: Click 'Ctime' option")
+        self.click(self.Ctime)
+
+    def select_hour(self, hour):
+        return (
+            AppiumBy.XPATH, f"//*[@class='android.widget.RadialTimePickerView$RadialPickerTouchHelper' and @content-desc='{hour}']"
+        )
+
+    def select_min(self,minute):
+        return (
+            AppiumBy.XPATH,
+            f"//*[@class='android.widget.RadialTimePickerView$RadialPickerTouchHelper' and @content-desc='{minute}']"
+        )
+
+
+
+    def click_hourmin(self,hour,minute):
+        log.info("UI ACTION: Click 'Hourmin' option")
+        self.click(self.select_hour(hour))
+        self.click(self.select_min(minute))
+        self.click(self.okoption)
+
+    def scroll_text(self):
+        log.info("UI ACTION: Scroll 'text' option")
+        self.scroll_and_click("WebView",5)
+        print(self.driver.contexts)
+
+
+
+    def is_sandbox_title_displayed(self):
+        contexts = self.driver.contexts
+        self.driver.switch_to.context(contexts[1])
+
+        element = self.find(
+            (AppiumBy.XPATH, "//*[text()='This page is a Selenium sandbox']")
+        )
+        return element.is_displayed()
+
+    def click_Drag_drop(self):
+        log.info("UI ACTION: Click 'Drag' option")
+        self.click(self.dr_option)
+
+
+    def drag_drop(self):
+        print(self.drsource)
+        source = self.wait_for_presence(self.drsource)
+        target = self.wait_for_presence(self.drtarget)
+        actions = ActionChains(self.driver)
+        actions.click_and_hold(source).pause(1).move_to_element(target).release().perform()
+
+    def get_drop_text(self):
+        element = self.wait_for_presence(
+                (AppiumBy.ID, "io.appium.android.apis:id/drag_result_text")
+            )
+        return element.is_displayed()
+
+    def click_expandable_list(self):
+        log.info("UI ACTION: Click 'Expandable List' option")
+        self.click(self.Expandable_list)
+
+    def click_custom_adapter(self):
+        log.info("UI ACTION: Click 'Custom Adapter' option")
+        self.click(self.Custom_adapter)
+
+    def click_long_press(self):
+        log.info("UI ACTION: Click 'Long Press' option")
+        element = self.find(self.Pname)
+        finger = PointerInput("touch", "finger")
+        actions = ActionBuilder(self.driver, mouse=finger)
+
+        actions.pointer_action.move_to(element)
+        actions.pointer_action.pointer_down()
+        actions.pointer_action.pause(2)  # hold for 2 seconds
+        actions.pointer_action.pointer_up()
+
+        actions.perform()
+        self.click(self.sample_action)
+
+    def Is_toast_message_displayed(self):
+        element = self.wait_for_presence(
+                (AppiumBy.XPATH, "//android.widget.Toast")
+            )
+        return element.text
+
+    def scroll_Popmenu(self):
+        log.info("UI ACTION: Scroll 'text' option")
+        self.scroll_and_click("Popup Menu",5)
+
+
+
+    def click_makepopup(self):
+        log.info("UI ACTION: Click 'Make Popup' option")
+        self.click(self.makePopup_option)
+
+    def click_edit_option(self):
+        log.info("UI ACTION: Click 'Edit Option' option")
+        self.click(self.click_option)
+
+    def click_link_option(self):
+        log.info("UI ACTION: Click 'Link Option' option")
+        contexts = self.driver.contexts
+        self.driver.switch_to.context(contexts[1])
+        linkoption=self.find(self.click_link)
+        self.click(linkoption)
+
+
+    def is_text_visible(self):
+        log.info("UI ACTION: Is Text Visible")
+        element = self.find(
+            (By.XPATH, "//*[contains(text(),'I am some other page content')]")
+        )
+        return element.is_displayed()
+
+
+    def rotate_to_landscape(self):
+        self.driver.orientation = "LANDSCAPE"
+
+    def get_orientation(self):
+        return self.driver.orientation
+
+
+    def click_gallery(self):
+        log.info("UI ACTION: Click 'Gallery' option")
+        self.click(self.gallery_option)
+
+    def click_photos(self):
+        log.info("UI ACTION: Click 'Photos' option")
+        self.click(self.photos_option)
+
+    def open_first_image(self):
+        image = self.find(self.first_image_option)
+        image.click()
+
+    def pinch_image(self):
+        element = self.find(self.first_image_option)
+
+        self.driver.execute_script(
+            "mobile: pinchCloseGesture",
+            {
+                "elementId": element.id,
+                "percent": 0.75,
+                "speed": 200
+            }
+        )
+
+    def is_image_displayed(self):
+        element = self.find(self.first_image_option)
+        return element.is_displayed()
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 import logging
 import allure
+from cffi.cparser import Parser
 from pytest_bdd import given, when, then, parsers
 
 from pages.apidemopage.apidemopages import ApiDemoPage
@@ -173,6 +174,138 @@ def user_confirms_selection(apidemo,date):
     assert date in actual
 
 
+@then(parsers.parse("the user clicks CHANGE THE TIME"))
+def user_clicks_on_Ctime(apidemo):
+    log.info(f"user_clicks_on_Ctime:")
+    apidemo.click_ctime()
+
+
+@then(parsers.parse('the user selects hour "{hour}" and "{minute}"'))
+def user_clicks_on_chour_cmin(apidemo,hour,minute):
+    log.info(f"user_clicks_on_chour_cmin:")
+    apidemo.selected_time = f"{hour}:{minute}"
+    print("the selected time displayed:", apidemo.selected_time)
+    apidemo.click_hourmin(hour,minute)
+
+@then(parsers.parse("the selected time should be displayed"))
+def user_shows_time(apidemo):
+    log.info(f"user_shows_time:")
+    actual = apidemo.get_date_text()
+    print("Actual date displayed:", actual)
+    actual_time = actual.split(" ")[1]  # gets HH:MM
+    assert actual_time == apidemo.selected_time
+
+@then(parsers.parse("the user scrolls down the screen and click webview option"))
+def user_scrolls_down(apidemo):
+    log.info(f"user_scrolls_down:")
+    apidemo.scroll_text()
+
+
+
+@then(parsers.parse("verify the title of the page"))
+def verify_title(apidemo):
+    log.info(f"verify_title:")
+    assert apidemo.is_sandbox_title_displayed()
+
+
+@then(parsers.parse(("user clicks on Drag and Drop")))
+def user_clicks_on_drag_and_drop(apidemo):
+    log.info(f"user_clicks_on_drag_and_drop:")
+    apidemo.click_Drag_drop()
+
+
+@then(parsers.parse("the user drags the first dot to the second dot"))
+def user_clicks_on_drag_and_drop(apidemo):
+    log.info(f"user_clicks_on_drag_and_drop:")
+    apidemo.drag_drop()
+
+
+@then(parsers.parse("verify the dropped text is visible"))
+def verify_dropped_text(apidemo):
+    log.info(f"verify_dropped_text:")
+    assert apidemo.get_drop_text()
+
+
+@then(parsers.parse("user clicks on Expandable Lists"))
+def user_clicks_on_expandable_list(apidemo):
+    log.info(f"user_clicks_on_expandable_list:")
+    apidemo.click_expandable_list()
+
+
+@then(parsers.parse("user clicks on custom adapter"))
+def user_clicks_on_adapter(apidemo):
+    log.info(f"user_clicks_on_adapter:")
+    apidemo.click_custom_adapter()
+
+@then(parsers.parse("the user long presses on People Names"))
+def user_clicks_on_long_presses(apidemo):
+    log.info(f"user_clicks_on_long_presses:")
+    apidemo.click_long_press()
+
+@then(parsers.parse("verify the toast message by clicking sample action"))
+def toast_message_displayed(apidemo):
+    log.info(f"toast_message_displayed:")
+    assert apidemo.Is_toast_message_displayed() == "People Names: Group 0 clicked"
+
+@then(parsers.parse("user clicks on Popupmenu"))
+def user_clicks_on_popupmenu(apidemo):
+    log.info(f"user_clicks_on_popupmenu:")
+    apidemo.scroll_Popmenu()
+
+@then(parsers.parse("the user clicks Make a Popup!"))
+def user_clicks_on_make_popup(apidemo):
+    log.info(f"user_clicks_on_make_popup:")
+    apidemo.click_makepopup()
+
+@then(parsers.parse("the user selects an option"))
+def user_clicks_on_select_option(apidemo):
+    log.info(f"user_clicks_on_select_option:")
+    apidemo.click_edit_option()
+
+@then(parsers.parse("a toast message should appear"))
+def toast_message_displayed(apidemo):
+    log.info(f"toast_message_displayed:")
+    assert apidemo.Is_toast_message_displayed() == "Clicked popup menu item Edit"
+
+@then(parsers.parse("user click on link in the webview"))
+def user_link_in_webview(apidemo):
+    log.info(f"user_link_in_webview:")
+    apidemo.click_link_option()
+
+
+
+
+@then(parsers.parse("the text should be displayed"))
+def text_displayed(apidemo):
+    log.info(f"text_displayed:")
+    assert apidemo.is_text_visible()
+
+
+@when("the device orientation changes to landscape")
+def rotate_device(apidemo):
+    apidemo.rotate_to_landscape()
+
+@then("the application should adjust to landscape mode")
+def verify_landscape(apidemo):
+    assert apidemo.get_orientation() == "LANDSCAPE"
+
+
+@then(parsers.parse("user clicks on Gallery"))
+def user_clicks_on_gallery(apidemo):
+    log.info(f"user_clicks_on_gallery:")
+    apidemo.click_gallery()
+    apidemo.click_photos()
+
+@then(parsers.parse("the user performs a pinch gesture on the image"))
+def user_clicks_on_gesture(apidemo):
+    log.info(f"user_clicks_on_gesture:")
+    apidemo.open_first_image()
+    apidemo.pinch_image()
+
+@then(parsers.parse("the image should zoom out"))
+def zoom_out(apidemo):
+    log.info(f"zoom_out:")
+    assert  apidemo.is_image_displayed()
 
 
 
