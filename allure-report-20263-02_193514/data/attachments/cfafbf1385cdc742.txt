@@ -1,0 +1,4 @@
+Launching app capability profile: app2
+the selected time displayed: 10:30
+the date is3-11-2026 10:30
+Actual date displayed: 3-11-2026 10:30

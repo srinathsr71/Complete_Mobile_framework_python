@@ -1,8 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Select RadioButton2","16913","test_select_radiobutton2","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Enter text in Custom Title","17144","test_enter_text_in_custom_title[Hello Appium-Python Automation]","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Select and verify checkbox","15506","test_select_and_verify_checkbox","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Handle OK Cancel dialog","18578","test_handle_ok_cancel_dialog","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Choose a specific date","19441","test_choose_a_specific_date[15]","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Select planet from dropdown","18392","test_select_planet_from_dropdown[Earth]","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
-"C:\Users\Srinath\PycharmProjects\MobileAutomationFramework\features\APIdemo.feature: Navigate to App Activity Custom Title","18063","test_navigate_to_app_activity_custom_title","tests","2026-03-09","passed","2026-03-09","","test_runner_store","",""
